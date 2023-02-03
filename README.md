@@ -1,5 +1,9 @@
 # Example for deploy control-plane to Amazon ECS
 
+## Architectue
+
+!(assets/control-plane-on-aws.jpg)
+
 ## Prepare
 1. Make a s3 bucket for terraform backend
 Write bucket name to `00-main.tf`
