@@ -2,7 +2,7 @@
 
 ## Architectue
 
-!(assets/control-plane-on-aws.jpg)
+![](assets/control-plane-on-aws.jpg)
 
 ## Prepare
 1. Make a s3 bucket for terraform backend
