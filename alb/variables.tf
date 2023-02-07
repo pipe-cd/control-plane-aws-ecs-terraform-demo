@@ -20,3 +20,8 @@ variable "certificate_arn" {
   type    = string
   default = ""
 }
+
+variable "http_host_header" {
+  type    = string
+  default = ""
+}

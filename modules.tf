@@ -5,13 +5,14 @@ module "vpc" {
 }
 
 module "alb" {
-  source          = "./alb"
-  certificate_arn = local.alb.certificate_arn
-  project         = local.project
-  vpc_id          = module.vpc.vpc_id
-  subnet_ids      = [module.vpc.subnet_public_a_id, module.vpc.subnet_public_c_id]
-  tags            = merge(local.basicTags, local.componentType.networking)
-  depends_on      = [module.vpc]
+  source           = "./alb"
+  certificate_arn  = local.alb.certificate_arn
+  project          = local.project
+  vpc_id           = module.vpc.vpc_id
+  http_host_header = local.alb.http_host_header
+  subnet_ids       = [module.vpc.subnet_public_a_id, module.vpc.subnet_public_c_id]
+  tags             = merge(local.basicTags, local.componentType.networking)
+  depends_on       = [module.vpc]
 }
 
 module "redis" {

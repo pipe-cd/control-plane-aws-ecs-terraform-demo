@@ -17,7 +17,8 @@ locals {
 locals {
   project = "example-pipecd-control-plane"
   alb = {
-    certificate_arn = ""
+    certificate_arn  = ""
+    http_host_header = ""
   }
 
   redis = {

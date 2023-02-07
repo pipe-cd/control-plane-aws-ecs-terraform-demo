@@ -1,29 +1,14 @@
 resource "aws_lb_listener_rule" "http" {
-  listener_arn = aws_lb_listener.http.arn
+  listener_arn = aws_lb_listener.main.arn
 
   action {
     type             = "forward"
     target_group_arn = aws_lb_target_group.http.arn
   }
   condition {
-    path_pattern {
-      values = ["*"]
+    host_header {
+      values = [var.http_host_header]
     }
   }
-  depends_on = [aws_lb_listener.http]
-}
-
-resource "aws_lb_listener_rule" "grpc" {
-  listener_arn = aws_lb_listener.grpc.arn
-
-  action {
-    type             = "forward"
-    target_group_arn = aws_lb_target_group.grpc.arn
-  }
-  condition {
-    path_pattern {
-      values = ["*"]
-    }
-  }
-  depends_on = [aws_lb_listener.grpc]
+  depends_on = [aws_lb_listener.main]
 }
