@@ -89,11 +89,6 @@ variable "kms_decryption_key_id" {
   default = ""
 }
 
-variable "config_bucket_name" {
-  type    = string
-  default = ""
-}
-
 variable "control_plane_config_secret" {
   type    = string
   default = ""
@@ -105,21 +100,6 @@ variable "envoy_config_secret" {
 }
 
 variable "encryption_key_secret" {
-  type    = string
-  default = ""
-}
-
-variable "path_to_control_plane_config" {
-  type    = string
-  default = ""
-}
-
-variable "path_to_envoy_config" {
-  type    = string
-  default = ""
-}
-
-variable "path_to_encryption_key" {
   type    = string
   default = ""
 }
