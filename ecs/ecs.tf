@@ -44,7 +44,7 @@ resource "aws_ecs_task_definition" "this" {
         secrets = [
           {
             "name" : "ENVOY_CONFIG",
-            "valueFrom" : "arn:aws:secretsmanager:${data.aws_region.current.id}:${data.aws_caller_identity.self.account_id}:secret:${var.envoy_config_secret}"
+            "valueFrom" : "${data.aws_secretsmanager_secret.envoy_config.arn}"
           },
         ]
         logConfiguration = {
@@ -71,11 +71,11 @@ resource "aws_ecs_task_definition" "this" {
         secrets = [
           {
             "name" : "ENCRYPTION_KEY",
-            "valueFrom" : "arn:aws:secretsmanager:${data.aws_region.current.id}:${data.aws_caller_identity.self.account_id}:secret:${var.encryption_key_secret}"
+            "valueFrom" : "${data.aws_secretsmanager_secret.encryption_key.arn}"
           },
           {
             "name" : "CONTROL_PLANE_CONFIG",
-            "valueFrom" : "arn:aws:secretsmanager:${data.aws_region.current.id}:${data.aws_caller_identity.self.account_id}:secret:${var.control_plane_config_secret}"
+            "valueFrom" : "${data.aws_secretsmanager_secret.control_plane_config.arn}"
           },
         ]
         logConfiguration = {

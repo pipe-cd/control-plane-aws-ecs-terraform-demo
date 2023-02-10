@@ -6,8 +6,8 @@ resource "aws_ecs_task_definition" "ops" {
     "FARGATE",
   ]
   execution_role_arn = aws_iam_role.ecs_task_execution.arn
-  memory             = cmemory
-  cpu                = cpu
+  memory             = var.memory
+  cpu                = var.cpu
   container_definitions = jsonencode(
     [
       {
@@ -37,11 +37,11 @@ resource "aws_ecs_task_definition" "ops" {
         secrets = [
           {
             "name" : "ENCRYPTION_KEY",
-            "valueFrom" : "arn:aws:secretsmanager:${data.aws_region.current.id}:${data.aws_caller_identity.self.account_id}:secret:${var.encryption_key_secret}"
+            "valueFrom" : "${data.aws_secretsmanager_secret.encryption_key.arn}"
           },
           {
             "name" : "CONTROL_PLANE_CONFIG",
-            "valueFrom" : "arn:aws:secretsmanager:${data.aws_region.current.id}:${data.aws_caller_identity.self.account_id}:secret:${var.control_plane_config_secret}"
+            "valueFrom" : "${data.aws_secretsmanager_secret.control_plane_config.arn}"
           },
         ]
         logConfiguration = {
