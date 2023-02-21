@@ -4,7 +4,7 @@ spec:
   datastore:
     type: MYSQL
     config: 
-        url: root:password@tcp(pipecd-mysql:3306) 
+        url: sample:password@tcp(pipecd-mysql:3306) 
         database: quickstart
   filestore:
     type: S3
