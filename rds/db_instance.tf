@@ -28,7 +28,7 @@ resource "aws_db_instance" "main" {
   publicly_accessible                   = "false"
   storage_encrypted                     = "false"
   storage_type                          = "gp2"
-  username                              = "root"
+  username                              = "sample"
   password                              = "password"
   vpc_security_group_ids                = [aws_security_group.db.id]
   skip_final_snapshot                   = true
