@@ -10,7 +10,7 @@ Write bucket name to `00-main.tf`
 ```
 terraform {
   backend "s3" {
-    bucket  = "example-pipecd-control-plane-tfstate" #your bucket name for terraform backend
+    bucket  = "<your bucket name for terraform backend>"
     region  = "ap-northeast-1"
     key     = "tfstate"
     profile = "pipecd-control-planeg-terraform" #your profile
@@ -59,7 +59,7 @@ spec:
     filestore:
     type: S3
     config: # edit here
-        bucket: example-pipecd-control-plane-filestore 
+        bucket: <your bucket name used for filestore> 
         region: ap-northeast-1
     projects:
     - id: quickstart
