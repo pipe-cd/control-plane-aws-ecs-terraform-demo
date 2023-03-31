@@ -1,6 +1,5 @@
 data "aws_caller_identity" "current" {}
 
-//export
 locals {
   project = "example-pipecd-control-plane"
   alb = {
