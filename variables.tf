@@ -17,7 +17,7 @@ locals {
   }
 
   s3 = { # These must be unique in the world.
-    filestore_bucket = "${local.project}-filestore"
+    filestore_bucket = ""
   }
 
   ecs = {
