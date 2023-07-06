@@ -21,7 +21,7 @@ resource "aws_ecs_task_definition" "ops" {
             "appProtocol" : "http"
           },
           {
-            "name" : "http",
+            "name" : "admin",
             "protocol" : "tcp",
             "containerPort" : 9085,
             "appProtocol" : "http"
