@@ -19,7 +19,7 @@ resource "aws_db_instance" "main" {
   max_allocated_storage                 = "1000"
   monitoring_interval                   = "0"
   multi_az                              = "false"
-  name                                  = "quickstart"
+  db_name                               = "quickstart"
   option_group_name                     = "default:mysql-8-0"
   parameter_group_name                  = "default.mysql8.0"
   performance_insights_enabled          = "false"
