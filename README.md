@@ -7,7 +7,7 @@
 ## Prepare
 1. Make a s3 bucket for terraform backend
 Write bucket name to `00-main.tf`
-```
+```tf
 terraform {
   backend "s3" {
     bucket  = "<your bucket name for terraform backend>"
@@ -24,7 +24,7 @@ terraform {
 ```
 
 2. Edit `variables.tf` for your project
-```
+```tf
 //export
 locals {
   alb = {
@@ -47,7 +47,7 @@ locals {
 ```
 
 3. Make a s3 bucket for filestore and write the bucket name for it to `control-plane-config.yaml` and `variables.tf`
-```
+```yaml
 apiVersion: "pipecd.dev/v1beta1"
 kind: ControlPlane
 spec:
@@ -67,7 +67,7 @@ spec:
         username: hello-pipecd
         passwordHash: "$2a$10$ye96mUqUqTnjUqgwQJbJzel/LJibRhUnmzyypACkvrTSnQpVFZ7qK" # bcrypt value of "hello-pipecd"
 ```
-```
+```tf
 //export
 locals {
   s3 = { # These must be unique in the world.
@@ -77,7 +77,7 @@ locals {
 ```
 4. Write config of RDS for datastore to `control-plane-config.yaml`
 Note: Do not edit hostname (pipecd-mysql) because it will be edited autimaticaly by terraform.
-```
+```yaml
 apiVersion: "pipecd.dev/v1beta1"
 kind: ControlPlane
 spec:
@@ -99,7 +99,7 @@ spec:
 ```
 
 5. Put encryption key and config file in secretsmanager and write the path to `variables.tf`
-```
+```tf
 locals {
   sm = {
     control_plane_config_secret = ""
